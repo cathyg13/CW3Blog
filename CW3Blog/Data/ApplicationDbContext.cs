@@ -22,5 +22,7 @@ namespace CW3Blog.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<CW3Blog.Models.User> User { get; set; }
     }
 }
