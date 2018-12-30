@@ -112,14 +112,18 @@ namespace CW3Blog
             Task<IdentityResult> roleResult;
             string emailAddress = "Member2@email.com";
 
-            //Check that there is an Admin role and create if not
-            Task<bool> hasAdminRole = roleManager.RoleExistsAsync("RAdmin");
-            hasAdminRole.Wait();
-
-            if (!hasAdminRole.Result)
+            //Check that there is a role and create if no
+            string[] roleName = { "RCustomer", "RAdmin" };
+            foreach(string r in roleName)
             {
-                roleResult = roleManager.CreateAsync(new IdentityRole("RAdmin"));
-                roleResult.Wait();
+                Task<bool> hasRole = roleManager.RoleExistsAsync(r);
+                hasRole.Wait();
+
+                if (!hasRole.Result)
+                {
+                    roleResult = roleManager.CreateAsync(new IdentityRole(r));
+                    roleResult.Wait();
+                }
             }
 
             //Check if the admin user exists and create it if not
