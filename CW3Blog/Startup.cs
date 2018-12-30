@@ -114,7 +114,7 @@ namespace CW3Blog
             //Check that there is a role and create if no
             string[] roleName = { "RCustomer", "RAdmin" };
 
-            foreach(string r in roleName)
+            foreach (string r in roleName)
             {
                 Task<bool> hasRole = roleManager.RoleExistsAsync(r);
                 hasRole.Wait();
@@ -137,21 +137,31 @@ namespace CW3Blog
 
                 if (testUser.Result == null)
                 {
-                    ApplicationUser administrator = new ApplicationUser();
-                    administrator.Email = u;
-                    administrator.UserName = u;
+                    ApplicationUser user = new ApplicationUser();
+                    user.Email = u;
+                    user.UserName = u;
 
-                    Task<IdentityResult> newUser = userManager.CreateAsync(administrator, "_Password123!");
+                    Task<IdentityResult> newUser = userManager.CreateAsync(user, "_Password123!");
                     newUser.Wait();
 
                     if (newUser.Result.Succeeded)
                     {
-                        Task<IdentityResult> newUserRole = userManager.AddToRoleAsync(administrator, "RAdmin");
-                        newUserRole.Wait();
+
+                        if (u.Contains("Member"))
+                        {
+                            Task<IdentityResult> newUserRole = userManager.AddToRoleAsync(user, "RAdmin");
+                            newUserRole.Wait();
+                        }
+
+                        else
+                        {
+                            Task<IdentityResult> newUserRole = userManager.AddToRoleAsync(user, "RCustomer");
+                            newUserRole.Wait();
+                        }
                     }
                 }
-            }
 
+            }
         }
     }
 }
