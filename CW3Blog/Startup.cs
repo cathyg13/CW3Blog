@@ -110,36 +110,36 @@ namespace CW3Blog
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             Task<IdentityResult> roleResult;
-            string email = "someone@somewhere.com";
+            string emailAddress = "Member2@email.com";
 
-            //Check that there is an Administrator role and create if not
-            Task<bool> hasAdminRole = roleManager.RoleExistsAsync("Administrator");
+            //Check that there is an Admin role and create if not
+            Task<bool> hasAdminRole = roleManager.RoleExistsAsync("RAdmin");
             hasAdminRole.Wait();
 
             if (!hasAdminRole.Result)
             {
-                roleResult = roleManager.CreateAsync(new IdentityRole("Administrator"));
+                roleResult = roleManager.CreateAsync(new IdentityRole("RAdmin"));
                 roleResult.Wait();
             }
 
             //Check if the admin user exists and create it if not
-            //Add to the Administrator role
+            //Add to the Admin role
 
-            Task<ApplicationUser> testUser = userManager.FindByEmailAsync(email);
+            Task<ApplicationUser> testUser = userManager.FindByNameAsync(emailAddress);
             testUser.Wait();
 
             if (testUser.Result == null)
             {
                 ApplicationUser administrator = new ApplicationUser();
-                administrator.Email = email;
-                administrator.UserName = email;
+                administrator.Email = emailAddress;
+                administrator.UserName = emailAddress;
 
-                Task<IdentityResult> newUser = userManager.CreateAsync(administrator, "_AStrongP@ssword!");
+                Task<IdentityResult> newUser = userManager.CreateAsync(administrator, "_Password123!");
                 newUser.Wait();
 
                 if (newUser.Result.Succeeded)
                 {
-                    Task<IdentityResult> newUserRole = userManager.AddToRoleAsync(administrator, "Administrator");
+                    Task<IdentityResult> newUserRole = userManager.AddToRoleAsync(administrator, "RAdmin");
                     newUserRole.Wait();
                 }
             }
