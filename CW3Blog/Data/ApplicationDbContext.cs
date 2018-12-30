@@ -23,6 +23,6 @@ namespace CW3Blog.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<CW3Blog.Models.User> User { get; set; }
+        public DbSet<CW3Blog.Models.UserModel> User { get; set; }
     }
 }

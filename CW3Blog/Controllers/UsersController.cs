@@ -54,7 +54,7 @@ namespace CW3Blog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Username,EmailAddress,DoB,Location,Gender,Avatar")] User user)
+        public async Task<IActionResult> Create([Bind("ID,Username,EmailAddress,DoB,Location,Gender,Avatar")] UserModel user)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace CW3Blog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Username,EmailAddress,DoB,Location,Gender,Avatar")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Username,EmailAddress,DoB,Location,Gender,Avatar")] UserModel user)
         {
             if (id != user.ID)
             {
