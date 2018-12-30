@@ -141,7 +141,7 @@ namespace CW3Blog
                     user.Email = u;
                     user.UserName = u;
 
-                    Task<IdentityResult> newUser = userManager.CreateAsync(user, "_Password123!");
+                    Task<IdentityResult> newUser = userManager.CreateAsync(user, "Password123!");
                     newUser.Wait();
 
                     if (newUser.Result.Succeeded)
