@@ -33,14 +33,14 @@ namespace CW3Blog.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
+            var userModel = await _context.User
                 .SingleOrDefaultAsync(m => m.ID == id);
-            if (user == null)
+            if (userModel == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(userModel);
         }
 
         // GET: Users/Create
@@ -54,15 +54,15 @@ namespace CW3Blog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Username,EmailAddress,DoB,Location,Gender,Avatar")] UserModel user)
+        public async Task<IActionResult> Create([Bind("ID,Username,EmailAddress,DoB,Avatar")] UserModel userModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                _context.Add(userModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(userModel);
         }
 
         // GET: Users/Edit/5
@@ -73,12 +73,12 @@ namespace CW3Blog.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.SingleOrDefaultAsync(m => m.ID == id);
-            if (user == null)
+            var userModel = await _context.User.SingleOrDefaultAsync(m => m.ID == id);
+            if (userModel == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(userModel);
         }
 
         // POST: Users/Edit/5
@@ -86,9 +86,9 @@ namespace CW3Blog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Username,EmailAddress,DoB,Location,Gender,Avatar")] UserModel user)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Username,EmailAddress,DoB,Avatar")] UserModel userModel)
         {
-            if (id != user.ID)
+            if (id != userModel.ID)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace CW3Blog.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(userModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.ID))
+                    if (!UserModelExists(userModel.ID))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace CW3Blog.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(userModel);
         }
 
         // GET: Users/Delete/5
@@ -124,14 +124,14 @@ namespace CW3Blog.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
+            var userModel = await _context.User
                 .SingleOrDefaultAsync(m => m.ID == id);
-            if (user == null)
+            if (userModel == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(userModel);
         }
 
         // POST: Users/Delete/5
@@ -139,13 +139,13 @@ namespace CW3Blog.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.SingleOrDefaultAsync(m => m.ID == id);
-            _context.User.Remove(user);
+            var userModel = await _context.User.SingleOrDefaultAsync(m => m.ID == id);
+            _context.User.Remove(userModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool UserModelExists(int id)
         {
             return _context.User.Any(e => e.ID == id);
         }
