@@ -11,9 +11,10 @@ using System;
 namespace CW3Blog.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181231121315_Datetime")]
+    partial class Datetime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,22 +70,6 @@ namespace CW3Blog.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("CW3Blog.Models.BlogPostModel", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Content");
-
-                    b.Property<DateTime>("CreatedTime");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("BlogPostModel");
                 });
 
             modelBuilder.Entity("CW3Blog.Models.UserModel", b =>
