@@ -102,7 +102,7 @@ namespace CW3Blog.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserModelExists(userModel.ID))
+                    if (!userModelExists(userModel.ID))
                     {
                         return NotFound();
                     }
@@ -145,7 +145,7 @@ namespace CW3Blog.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserModelExists(int id)
+        private bool userModelExists(int id)
         {
             return _context.User.Any(e => e.ID == id);
         }

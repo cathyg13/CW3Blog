@@ -59,8 +59,6 @@ namespace CW3Blog.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
@@ -234,7 +232,7 @@ namespace CW3Blog.Controllers
                     _logger.LogInformation("User created a new account with password.");
                     return RedirectToLocal(returnUrl);
                 }
-                AddErrors(result);
+                addErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
@@ -322,7 +320,7 @@ namespace CW3Blog.Controllers
                         return RedirectToLocal(returnUrl);
                     }
                 }
-                AddErrors(result);
+                addErrors(result);
             }
 
             ViewData["ReturnUrl"] = returnUrl;
@@ -419,7 +417,7 @@ namespace CW3Blog.Controllers
             {
                 return RedirectToAction(nameof(ResetPasswordConfirmation));
             }
-            AddErrors(result);
+            addErrors(result);
             return View();
         }
 
@@ -439,7 +437,7 @@ namespace CW3Blog.Controllers
 
         #region Helpers
 
-        private void AddErrors(IdentityResult result)
+        private void addErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
             {

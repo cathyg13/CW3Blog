@@ -106,7 +106,6 @@ namespace CW3Blog
         }
         private void createRoles(IServiceProvider serviceProvider)
         {
-
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             Task<IdentityResult> roleResult;

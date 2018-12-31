@@ -167,7 +167,7 @@ namespace CW3Blog.Controllers
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
             if (!changePasswordResult.Succeeded)
             {
-                AddErrors(changePasswordResult);
+                addErrors(changePasswordResult);
                 return View(model);
             }
 
@@ -216,7 +216,7 @@ namespace CW3Blog.Controllers
             var addPasswordResult = await _userManager.AddPasswordAsync(user, model.NewPassword);
             if (!addPasswordResult.Succeeded)
             {
-                AddErrors(addPasswordResult);
+                addErrors(addPasswordResult);
                 return View(model);
             }
 
@@ -373,7 +373,7 @@ namespace CW3Blog.Controllers
             }
 
             var model = new EnableAuthenticatorViewModel();
-            await LoadSharedKeyAndQrCodeUriAsync(user, model);
+            await loadSharedKeyAndQrCodeUriAsync(user, model);
 
             return View(model);
         }
@@ -390,7 +390,7 @@ namespace CW3Blog.Controllers
 
             if (!ModelState.IsValid)
             {
-                await LoadSharedKeyAndQrCodeUriAsync(user, model);
+                await loadSharedKeyAndQrCodeUriAsync(user, model);
                 return View(model);
             }
 
@@ -403,7 +403,7 @@ namespace CW3Blog.Controllers
             if (!is2faTokenValid)
             {
                 ModelState.AddModelError("Code", "Verification code is invalid.");
-                await LoadSharedKeyAndQrCodeUriAsync(user, model);
+                await loadSharedKeyAndQrCodeUriAsync(user, model);
                 return View(model);
             }
 
@@ -493,7 +493,7 @@ namespace CW3Blog.Controllers
 
         #region Helpers
 
-        private void AddErrors(IdentityResult result)
+        private void addErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
             {
@@ -501,7 +501,7 @@ namespace CW3Blog.Controllers
             }
         }
 
-        private string FormatKey(string unformattedKey)
+        private string formatKey(string unformattedKey)
         {
             var result = new StringBuilder();
             int currentPosition = 0;
@@ -518,7 +518,7 @@ namespace CW3Blog.Controllers
             return result.ToString().ToLowerInvariant();
         }
 
-        private string GenerateQrCodeUri(string email, string unformattedKey)
+        private string generateQrCodeUri(string email, string unformattedKey)
         {
             return string.Format(
                 AuthenticatorUriFormat,
@@ -527,7 +527,7 @@ namespace CW3Blog.Controllers
                 unformattedKey);
         }
 
-        private async Task LoadSharedKeyAndQrCodeUriAsync(ApplicationUser user, EnableAuthenticatorViewModel model)
+        private async Task loadSharedKeyAndQrCodeUriAsync(ApplicationUser user, EnableAuthenticatorViewModel model)
         {
             var unformattedKey = await _userManager.GetAuthenticatorKeyAsync(user);
             if (string.IsNullOrEmpty(unformattedKey))
@@ -537,7 +537,7 @@ namespace CW3Blog.Controllers
             }
 
             model.SharedKey = FormatKey(unformattedKey);
-            model.AuthenticatorUri = GenerateQrCodeUri(user.Email, unformattedKey);
+            model.AuthenticatorUri = generateQrCodeUri(user.Email, unformattedKey);
         }
 
         #endregion
