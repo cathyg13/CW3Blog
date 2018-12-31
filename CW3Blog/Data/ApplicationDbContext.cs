@@ -26,5 +26,7 @@ namespace CW3Blog.Data
         public DbSet<CW3Blog.Models.UserModel> User { get; set; }
 
         public DbSet<CW3Blog.Models.BlogPostModel> BlogPostModel { get; set; }
+
+        public DbSet<CW3Blog.Models.CommentModel> CommentModel { get; set; }
     }
 }
