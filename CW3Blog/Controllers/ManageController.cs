@@ -501,7 +501,7 @@ namespace CW3Blog.Controllers
             }
         }
 
-        private string formatKey(string unformattedKey)
+        private string FormatKey(string unformattedKey)
         {
             var result = new StringBuilder();
             int currentPosition = 0;
