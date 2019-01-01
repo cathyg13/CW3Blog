@@ -12,8 +12,9 @@ namespace CW3Blog.Models
         public int ID { get; set; }
         [Required]
         //public int PostID = BlogPostModel.GetID;
-        public string Username { get; set; }
+        public string AuthorName { get; set; }
         //who is logged in
+        //avatar
         [Required]
         public DateTime CreatedTime { get; set; }
         //current date time see controller

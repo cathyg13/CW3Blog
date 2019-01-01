@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-<h4>BlogPostModel</h4>
+<h4>New Blog Post</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,24 +14,35 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+                <input asp-for="Title" class="form-control" placeholder="The post title goes here..." />
                 <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorName" class="control-label"></label>
+                <input asp-for="AuthorName" class="form-control" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CreatedTime" class="control-label"></label>
                 <input asp-for="CreatedTime" class="form-control" />
                 <span asp-validation-for="CreatedTime" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Content" class="control-label"></label>
-                <input asp-for="Content" class="form-control" />
-                <span asp-validation-for="Content" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
+            <script language="JavaScript" type="text/javascript">
+                window.alert("hello");
+                oFormObject = document.forms[0];
+                oFormObject.elements["CreatedTime"].value = (new Date()).getTime();
+            </script>
+</div>
+    <div class="form-group">
+            <label asp-for="Content" class="control-label"></label>
+            <input asp-for="Content" class="form-control" style="height: 300px;" placeholder="What would you like to write?" />
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+</form>
+</div>
 </div>
 
 <div>

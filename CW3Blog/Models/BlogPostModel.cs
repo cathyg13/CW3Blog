@@ -14,6 +14,8 @@ namespace CW3Blog.Models
         public string Title { get; set; }
         //public List<string> CategoriesList { get; set; }
         //avatar
+        public string AuthorName { get; set; }
+        //who is logged in
         [Required]
         //current date time see controller
         public DateTime CreatedTime { get; set; }
