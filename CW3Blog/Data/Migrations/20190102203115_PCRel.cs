@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
+using System.Collections.Generic;
 
 namespace CW3Blog.Data.Migrations
 {
-    public partial class BlogPosts : Migration
+    public partial class PCRel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
