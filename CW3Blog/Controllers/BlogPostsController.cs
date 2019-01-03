@@ -32,7 +32,7 @@ namespace CW3Blog.Controllers
                 return NotFound();
             }
 
-            var blogPostModel = await _context.BlogPostModel
+            BlogPostModel blogPostModel = await _context.BlogPostModel
                 .SingleOrDefaultAsync(m => m.ID == id);
             if (blogPostModel == null)
             {

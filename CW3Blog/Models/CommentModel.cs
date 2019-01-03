@@ -6,9 +6,10 @@ namespace CW3Blog.Models
 {
     public class CommentModel
     {
+        //CommentID
         public int ID { get; set; }
 
-        public virtual BlogPostModel PostID { get; set; }
+        public virtual BlogPostModel BlogPost { get; set; }
 
         [Required]
         public string AuthorName { get; set; }
@@ -17,6 +18,7 @@ namespace CW3Blog.Models
         //avatar
 
         [Required]
+        [DataType(DataType.DateTime)]
         public DateTime CreatedTime { get; set; }
         //current date time see controller
 

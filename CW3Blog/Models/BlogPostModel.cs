@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CW3Blog.Models
 {
     public class BlogPostModel
     {
+        //PostID
         public int ID { get; set; }
 
         [Required]
@@ -19,11 +21,13 @@ namespace CW3Blog.Models
         //who is logged in
 
         [Required]
+        [DataType(DataType.DateTime)]
         //current date time see controller
         public DateTime CreatedTime { get; set; }
 
         [Required]
         [StringLength(10000)]
         public string Content { get; set; }
+
     }
 }

@@ -11,9 +11,10 @@ using System;
 namespace CW3Blog.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190103173703_linkComments")]
+    partial class linkComments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,6 +109,8 @@ namespace CW3Blog.Data.Migrations
                         .HasMaxLength(2000);
 
                     b.Property<DateTime>("CreatedTime");
+
+                    b.Property<int>("PostID");
 
                     b.HasKey("ID");
 
@@ -249,7 +252,7 @@ namespace CW3Blog.Data.Migrations
             modelBuilder.Entity("CW3Blog.Models.CommentModel", b =>
                 {
                     b.HasOne("CW3Blog.Models.BlogPostModel", "BlogPost")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("BlogPostID");
                 });
 
