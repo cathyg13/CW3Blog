@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using CW3Blog.Data;
 using CW3Blog.Models;
 using Microsoft.AspNetCore.Authorization;
+using CW3Blog.ViewModels;
+using System.Collections.Generic;
 
 namespace CW3Blog.Controllers
 {
@@ -39,8 +41,25 @@ namespace CW3Blog.Controllers
                 return NotFound();
             }
 
-            return View(blogPostModel);
+            BlogPostCommentsViewModel viewModel = await GetBlogPostCommentsViewModelFromBlogPost(blogPostModel);
+
+            return View(viewModel);
         }
+
+        private async Task<BlogPostCommentsViewModel> GetBlogPostCommentsViewModelFromBlogPost(BlogPostModel blogPost)
+         {
+
+            BlogPostCommentsViewModel viewModel = new BlogPostCommentsViewModel();
+
+            viewModel.BlogPost = blogPost;
+
+            List<CommentModel> comments = await _context.CommentModel
+                .Where(x => x.BlogPost == blogPost).ToListAsync();
+
+            viewModel.Comments = comments;
+
+            return viewModel;
+         }
 
         // GET: BlogPosts/Create
         public IActionResult Create()
@@ -63,6 +82,39 @@ namespace CW3Blog.Controllers
             }
             return View(blogPostModel);
         }
+
+        // POST: BlogPosts/Details
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Details([Bind("BlogPostID,AuthorName,CreatedTime,Content")] BlogPostCommentsViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                CommentModel comment = new CommentModel();
+
+                comment.AuthorName = viewModel.AuthorName;
+                comment.CreatedTime = viewModel.CreatedTime;
+                comment.Content = viewModel.Content;
+
+                BlogPostModel blogPost = await _context.BlogPostModel
+                    .SingleOrDefaultAsync(m => m.ID == viewModel.BlogPostID);
+
+                if (blogPost == null)
+                {
+                    return NotFound();
+                }
+
+                comment.BlogPost = blogPost;
+                _context.CommentModel.Add(comment);
+                await _context.SaveChangesAsync();
+
+                viewModel = await GetBlogPostCommentsViewModelFromBlogPost(blogPost);
+            }
+            return View(viewModel);
+        }
+
 
         // GET: BlogPosts/Edit/5
         public async Task<IActionResult> Edit(int? id)
