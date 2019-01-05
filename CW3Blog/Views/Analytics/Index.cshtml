@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<CW3Blog.ViewModels.AnalyticsViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Analytics";
 }
 
-<h2>Index</h2>
+<h2>Analytics of User Engagement</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -31,9 +28,6 @@
                 @Html.DisplayFor(modelItem => item.NumComments)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }
