@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CW3Blog.Models
@@ -12,11 +11,12 @@ namespace CW3Blog.Models
         [Required]
         [StringLength(60)]
         public string Title { get; set; }
-        
+
         //public List<string> CategoriesList { get; set; }
 
         //avatar
 
+        [Display(Name = "Author Name")]
         public string AuthorName { get; set; }
         //who is logged in
 
@@ -28,6 +28,7 @@ namespace CW3Blog.Models
         [Required]
         [StringLength(10000)]
         public string Content { get; set; }
+
 
     }
 }

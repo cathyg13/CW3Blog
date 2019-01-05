@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using CW3Blog.Models;
+using CW3Blog.ViewModels;
 
 namespace CW3Blog.Data
 {
@@ -24,6 +25,10 @@ namespace CW3Blog.Data
         public DbSet<CW3Blog.Models.BlogPostModel> BlogPostModel { get; set; }
 
         public DbSet<CW3Blog.Models.CommentModel> CommentModel { get; set; }
+
+        public DbSet<CW3Blog.ViewModels.AnalyticsViewModel> AnalyticsViewModel { get; set; }
+
+        public DbSet<CW3Blog.ViewModels.AnalyticsListViewModel> AnalyticsListViewModel { get; set; }
 
     }
 }

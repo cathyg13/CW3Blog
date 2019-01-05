@@ -76,6 +76,7 @@ namespace CW3Blog.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Title,AuthorName,CreatedTime,Content")] BlogPostModel blogPostModel)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(blogPostModel);
