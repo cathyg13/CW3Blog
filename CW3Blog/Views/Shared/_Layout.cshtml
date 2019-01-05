@@ -13,14 +13,17 @@
             background-color: #ffa833;
             height: 100%;
             width: 200px;
-            position: fixed; 
+            padding: 15px;
+            margin-left: 0px;
         }
 
     /* Set background color, text and some padding */
     footer {
       background-color: #0094ff;
+      text-align: center;
       color: black;
-      padding: 15px;
+      margin-top: 0px;
+      height: 50px;
     }
 
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -38,23 +41,19 @@
     <div class="col-sm-3 sidenav">
         <h4>CW3 Blog</h4>
         @await Html.PartialAsync("_LoginPartial")
-        <br>
+        <br/><br /><br /><br /><br />
         <ul class="nav nav-pills nav-stacked">
-            <br />
             <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-            <br />
             <li><a asp-area="" asp-controller="BlogPosts" asp-action="Index">Blog Posts</a></li>
-            <br />
             <li>Admin</li>
             <li><a asp-area="" asp-controller="Users" asp-action="Index">User Information</a></li>
-            <br />
             <li><a asp-area="" asp-controller="Analytics" asp-action="Index">Analytics</a></li>
         </ul>
         <br>
     </div>
 
 
-    <div class="container body-content" style="padding:50px;">
+    <div class="container body-content" style="padding:20px;">
             <div>
                 @RenderBody()
             </div>   
