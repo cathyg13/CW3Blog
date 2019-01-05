@@ -12,9 +12,10 @@
         .sidenav {
             background-color: #ffa833;
             height: 100%;
-            width: 200px;
+            width: 175px;
             padding: 15px;
-            margin-left: 0px;
+            position: fixed;
+            left: 0px;
         }
 
     /* Set background color, text and some padding */
@@ -22,7 +23,7 @@
       background-color: #0094ff;
       text-align: center;
       color: black;
-      margin-top: 0px;
+      bottom: 0px;
       height: 50px;
     }
 
@@ -61,12 +62,9 @@
            
 <footer>
     <p>
-    CW3Blog &copy;
-    <script>document.write(new Date().getFullYear())</script>
+    CW3Blog &copy; <script>document.write(new Date().getFullYear())</script>
     </p>
 </footer>
-
-
         @RenderSection("Scripts", required: false)
 </body>
 </html>
