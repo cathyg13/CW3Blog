@@ -12,6 +12,7 @@ namespace CW3Blog.Models
         public virtual BlogPostModel BlogPost { get; set; }
 
         [Required]
+        [Display(Name = "Author Name")]
         public string AuthorName { get; set; }
         //who is logged in
 
@@ -19,6 +20,7 @@ namespace CW3Blog.Models
 
         [Required]
         [DataType(DataType.DateTime)]
+        [Display(Name = "Time")]
         public DateTime CreatedTime { get; set; }
         //current date time see controller
 

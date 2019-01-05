@@ -22,6 +22,7 @@ namespace CW3Blog.Models
 
         [Required]
         [DataType(DataType.DateTime)]
+        [Display(Name = "Time")]
         //current date time see controller
         public DateTime CreatedTime { get; set; }
 

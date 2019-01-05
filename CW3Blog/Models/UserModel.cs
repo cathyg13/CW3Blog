@@ -20,12 +20,11 @@ namespace CW3Blog.Models
 
         [Required]
         [DataType(DataType.Date)]
+        [Display(Name = "Date of Birth")]
         public DateTime DoB { get; set; }
 
-        [DataType(DataType.Upload)]
-        public string Avatar { get; set; }
-        //link to \images
+        public string Gender { get; set; }
 
-        //would like lists for Gender Location
+        public string Location { get; set; }
     }
 }
