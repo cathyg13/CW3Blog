@@ -22,7 +22,7 @@ namespace CW3Blog.Models
         [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
         public DateTime DoB { get; set; }
-
+        
         public string Gender { get; set; }
 
         public string Location { get; set; }

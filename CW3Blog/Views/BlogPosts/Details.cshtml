@@ -1,4 +1,5 @@
 ﻿@model CW3Blog.ViewModels.BlogPostCommentsViewModel
+@inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Details";
@@ -70,10 +71,9 @@
     <div class="col-md-4">
         <form asp-action="Details">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="BlogPostID" value="@Model.BlogPost.ID"/>
+            <input type="hidden" asp-for="BlogPostID" value="@Model.BlogPost.ID" />
             <div class="form-group">
-                <label asp-for="AuthorName" class="control-label"></label>
-                <input asp-for="AuthorName" class="form-control" />
+                <input type="hidden" input asp-for="AuthorName" class="form-control" value=@UserManager.GetUserName(User) />
                 <span asp-validation-for="AuthorName" class="text-danger"></span>
             </div>
             <div class="form-group">
