@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Authorization;
 namespace CW3Blog.Controllers
 {
     [Authorize(Roles = "RAdmin")]
-    public class AnalyticsController : Controller
+    public class AnalyticsCommentsController : Controller
     {
     
     
 private readonly ApplicationDbContext _context;
 
-        public AnalyticsController(ApplicationDbContext context)
+        public AnalyticsCommentsController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -23,10 +23,10 @@ private readonly ApplicationDbContext _context;
         // GET: AnalyticsNumCommentsPerAuthor
         public async Task<IActionResult> Index()
         {
-            IQueryable<AnalyticsViewModel> commentsPerAuthor =
+            IQueryable<AnalyticsCommentsViewModel> commentsPerAuthor =
                 from analyseComment in _context.CommentModel
                 group analyseComment by analyseComment.AuthorName into authorGroup
-                select new AnalyticsViewModel()
+                select new AnalyticsCommentsViewModel()
                 {
                     AuthorName = authorGroup.Key,
                     NumComments = authorGroup.Count()

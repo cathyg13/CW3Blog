@@ -2,7 +2,7 @@
 
 namespace CW3Blog.ViewModels
 {
-    public class AnalyticsViewModel
+    public class AnalyticsCommentsViewModel
     {
         public int ID { get; set; }
 
