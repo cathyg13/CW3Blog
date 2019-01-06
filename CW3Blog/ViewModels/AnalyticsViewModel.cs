@@ -1,7 +1,4 @@
-﻿using CW3Blog.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CW3Blog.ViewModels
 {

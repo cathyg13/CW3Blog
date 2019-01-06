@@ -108,7 +108,7 @@ namespace CW3Blog
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             Task<IdentityResult> roleResult;
 
-            //Check that there is a role and create if no
+            //Check that there is a role and create if not
             string[] roleName = { "RCustomer", "RAdmin" };
 
             foreach (string r in roleName)

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CW3Blog.Data;
 using CW3Blog.ViewModels;
 using Microsoft.AspNetCore.Authorization;
-using CW3Blog.Models;
 
 namespace CW3Blog.Controllers
 {

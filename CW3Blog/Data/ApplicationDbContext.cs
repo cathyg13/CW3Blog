@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using CW3Blog.Models;
-using CW3Blog.ViewModels;
 
 namespace CW3Blog.Data
 {
