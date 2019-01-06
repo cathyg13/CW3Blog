@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CW3Blog.Data;
 using CW3Blog.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CW3Blog.Controllers
 {
