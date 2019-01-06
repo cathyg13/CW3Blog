@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CW3Blog.ViewModels.AnalyticsLocationViewModel>
+@{
+    ViewData["Title"] = "Location";
+}
+
+<h2>Location</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumUsers)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumUsers)
+                </td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    ViewData["Title"] = "Comment";
+}
+
+<h2>Comment</h2>
+

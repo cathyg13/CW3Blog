@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CW3Blog.ViewModels.AnalyticsViewModel>
+
+@{
+    ViewData["Title"] = "Comment Analytics";
+}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumComments)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumComments)
+                </td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    ViewData["Title"] = "Comment";
+}
+
+<h2>Comment</h2>
+
