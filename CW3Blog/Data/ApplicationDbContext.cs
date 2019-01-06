@@ -27,7 +27,5 @@ namespace CW3Blog.Data
 
         public DbSet<CW3Blog.ViewModels.AnalyticsViewModel> AnalyticsViewModel { get; set; }
 
-        public DbSet<CW3Blog.ViewModels.AnalyticsListViewModel> AnalyticsListViewModel { get; set; }
-
     }
 }
