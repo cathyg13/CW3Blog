@@ -6,30 +6,9 @@
 
 <h2>Analytics of User Engagement</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.AuthorName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NumComments)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthorName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumComments)
-            </td>
-            <td>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<li><a asp-area="" asp-controller="AnalyticsComments" asp-action="Comment">Analytics Comments</a></li>
+<li><a asp-area="" asp-controller="AnalyticsLocation" asp-action="Index">Analytics Location</a></li>
+<br />
+<div>
+    <a asp-area="" asp-controller="Home" asp-action="Index">Back</a>
+</div>

@@ -20,8 +20,12 @@ private readonly ApplicationDbContext _context;
             _context = context;
         }
 
-        // GET: AnalyticsNumCommentsPerAuthor
         public async Task<IActionResult> Index()
+        {
+            return View();
+        }
+            // GET: AnalyticsNumCommentsPerAuthor
+            public async Task<IActionResult> Comment()
         {
             IQueryable<AnalyticsCommentsViewModel> commentsPerAuthor =
                 from analyseComment in _context.CommentModel
