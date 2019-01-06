@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CW3Blog.Controllers
 {
+    [Authorize(Roles = "RAdmin, RCustomer")]
     public class CommentsController : Controller
     {
         private readonly ApplicationDbContext _context;
