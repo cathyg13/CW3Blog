@@ -13,9 +13,6 @@ namespace CW3Blog.Models
 
         public string AuthorName { get; set; }
 
-        [Required]
-        [DataType(DataType.DateTime)]
-        [Display(Name = "Time")]
         public DateTime CreatedTime { get; set; }
 
 
